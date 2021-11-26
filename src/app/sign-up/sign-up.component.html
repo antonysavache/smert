@@ -16,10 +16,7 @@
                        [ngClass]="{'is-invalid':username.errors && username.touched}"
                        id="username"
                        placeholder="Username">
-                <div class="invalid-feedback"
-                     *ngIf="username.hasError('usernameTaken')">
-                    Username is taken
-                </div>
+
                 <div class="invalid-feedback"
                      *ngIf="username.hasError('required')">
                     Username is required
@@ -39,10 +36,7 @@
                        [ngClass]="{'is-invalid':username.errors && username.touched}"
                        id="secondName"
                        placeholder="secondName">
-                <div class="invalid-feedback"
-                     *ngIf="username.hasError('usernameTaken')">
-                    Username is taken
-                </div>
+
                 <div class="invalid-feedback"
                      *ngIf="username.hasError('required')">
                     Username is required
@@ -101,16 +95,13 @@
                        [ngClass]="{'is-invalid':username.errors && username.touched}"
                        id="email"
                        placeholder="email">
-                <div class="invalid-feedback"
-                     *ngIf="username.hasError('usernameTaken')">
-                    Username is taken
-                </div>
+
                 <div class="invalid-feedback"
                      *ngIf="username.hasError('required')">
                     Username is required
                 </div>
                 <div class="invalid-feedback"
-                     *ngIf="username.hasError('usernameTaken')">
+                     *ngIf="username.hasError('minlength')">
                     Username must be at least 3 characters
                 </div>
 

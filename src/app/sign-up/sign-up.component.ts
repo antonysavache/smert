@@ -67,12 +67,6 @@ export class SignUpComponent implements OnInit {
 
 
       // daysAvailable: this.fb.array([this.fb.control("")])
-    },
-    {
-      validator: this.customValidator.passwordMatchValidator(
-        "password",
-        "confirmPassword"
-      )
     }
   );
 
