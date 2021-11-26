@@ -1,9 +1,34 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators, FormArray } from "@angular/forms";
 import { CustomValidationService } from "../services/custom-validation.service";
+import flatpickr from 'flatpickr';
+import 'flatpickr/dist/flatpickr.min.css';
+
+// let dateInput = document.querySelector('#datetime-picker');
+
+function onClick(event){
+  return flatpickr(event.target, options);
+}
+
+// dateInput.addEventListener('click', chooseADate)
+
+const options = {
+  enableTime: true,
+  time_24hr: true,
+  defaultDate: new Date(),
+  minuteIncrement: 1,
+};
+
+// 
+
+
 
 let a = document.querySelector('.row')
 let mySelect = document.querySelector('#inputState')
+
+
+
+
 
 
 @Component({
@@ -32,7 +57,7 @@ export class SignUpComponent implements OnInit {
 
       email: [
         "",
-        [Validators.required, Validators.minLength(3)],
+        [Validators.required, Validators.minLength(3), Validators.email],
         this.customValidator.validateUsernameNotTaken.bind(this.customValidator)
       ],
 
@@ -56,17 +81,23 @@ export class SignUpComponent implements OnInit {
   }
 
 
+
+
   onChange() {
-    if (this.framework === 'Angular'){
-      console.log('ch')
-    }
-    return console.log('angular')
+    console.log(this.framework.value == 'Angular')
+    if(this.framework.value == 'Angular'){
+      return this.frameVersionOptions = ["1.1.1", "1.2.1", "1.3.3"];
+    } else if (this.framework.value == 'React'){
+      return this.frameVersionOptions = ["2.1.2", "3.2.4", "4.3.1"];
+    } else if (this.framework.value == 'Vue'){
+    return this.frameVersionOptions = ["3.3.1", "5.2.1", "5.1.3"]}
   }
 
 
-  get daysAvailable() {
-    return this.userForm.get("daysAvailable") as FormArray;
-  }
+  
+
+
+
 
   get username() {
     return this.userForm.get("username");
@@ -80,15 +111,17 @@ export class SignUpComponent implements OnInit {
     return this.userForm.get("password");
   }
 
+
+  choose: string[] = null;
+
   frameOptions: string[] = ["Angular", "React", "Vue"];
 
-  angular: string[] = ["1.1.1", "1.2.1", "1.3.3"];
+  
+  // frameVersionOptions: string[] = ["1.1.1", "1.2.1", "1.3.3"];
   react: string[] = ["1.1.1", "1.2.1", "1.3.3"];
   vue: string[] = ["1.1.1", "1.2.1", "1.3.3"];
 
-  // frameVersionOptions: string[] = this.onChange();
-
-
+  frameVersionOptions: string[] = this.onChange();
   
   frameFunc(){
     if(this.frame.value === "React"){
@@ -115,3 +148,7 @@ export class SignUpComponent implements OnInit {
     console.log(this.frame.value);
   }
 }
+
+
+
+

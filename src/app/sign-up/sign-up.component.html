@@ -88,6 +88,11 @@
                 </select>
             </div>
 
+            <!-- <div class="form-group">
+                <label for="inputState">Choose a date</label>
+                <input (click)="onClick($event.target.value)" type="text" id="datetime-picker" class="flatpickr-input active" readonly="readonly">
+            </div> -->
+
             <div class="form-group">
                 <label for="username">email</label>
                 <input type="text"
@@ -105,23 +110,13 @@
                     Username is required
                 </div>
                 <div class="invalid-feedback"
-                     *ngIf="username.hasError('minlength')">
+                     *ngIf="username.hasError('usernameTaken')">
                     Username must be at least 3 characters
                 </div>
 
             </div>
             
 
-
-
-            <section formArrayName="daysAvailable">
-
-
-
-
-
-
-            </section>
 
             <p>
                 <button class="btn btn-success"
